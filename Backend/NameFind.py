@@ -54,8 +54,9 @@ def ID2Name(ID, conf):
 #     ------------------- THIS FUNCTION READ THE FILE AND ADD THE NAME TO THE END OF THE FILE  -----------------
 
 
-def AddName():
-    Name = input('Enter Your Name ')
+def AddName(nome):
+    # Name = input('Enter Your Name ')
+    Name=nome
     Info = open("Names.txt", "r+")
     ID = ((sum(1 for line in Info))+1)
     Info.write(str(ID) + " " + "," + " " + Name + "\n")

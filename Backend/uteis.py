@@ -4,38 +4,48 @@ import NameFind             # importa módulo NameFind
 import os                                               # importing the OS for path
 from PIL import Image                                   # importing Image library
 
-def captura (cam):
+def captura (cam,nome):
 
     face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')  # algoritmo detector de faces, a função classifier carrega o arquivo xml
     eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # algoritmo detector de olhos
 
-    ID = NameFind.AddName()
+    ID = NameFind.AddName(nome)
     # cam = cv2.VideoCapture(0)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
     Count = 0
 
-    while Count < 50:
-        ret, img = cam.read()
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                 # converte a imagem para a escala cinza, isso ajuda no reconhecimento
-        if np.average(gray) > 110:                                   # testa se o brilho da imagem é satisfatorio
-            faces = face_cascade.detectMultiScale(gray, 1.3,5)       # detecta as faces na imagem, guarda lista com as coordenadas da face(x,y,largura,altura)
-            for (x, y, w, h) in faces:
-                FaceImage = gray[y - int(h / 2): y + int(h * 1.5),x - int(x / 2): x + int(w * 1.5)]  # a imagem é cortada de forma a capturar apenas a face
-                Img = (NameFind.DetectEyes(FaceImage))
-                cv2.putText(gray, "FACE DETECTED", (x + int((w / 2)), y - 5), cv2.FONT_HERSHEY_DUPLEX, .4, [255, 255, 255])  # texto plotado caso detecte rosto
-                if Img is not None:
-                    frame = Img  # Show the detected faces
-                else:
-                    frame = gray[y: y + h, x: x + w]
-                cv2.imwrite("dataSet/User." + str(ID) + "." + str(Count) + ".jpg", frame)
-                cv2.waitKey(300)
-                cv2.imshow("CAPTURED PHOTO", frame)  # show the captured image
-                Count = Count + 1
-        cv2.imshow('Face Recognition System Capture Faces', gray)  # Show the video
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    print('FACE CAPTURE FOR THE SUBJECT IS COMPLETE')
-    cam.release()
-    cv2.destroyAllWindows()
+    try:
+        while Count < 50:
+            ret, img = cam.read()
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                 # converte a imagem para a escala cinza, isso ajuda no reconhecimento
+            if np.average(gray) > 110:                                   # testa se o brilho da imagem é satisfatorio
+                faces = face_cascade.detectMultiScale(gray, 1.3,5)       # detecta as faces na imagem, guarda lista com as coordenadas da face(x,y,largura,altura)
+                for (x, y, w, h) in faces:
+                    FaceImage = gray[y - int(h / 2): y + int(h * 1.5),x - int(x / 2): x + int(w * 1.5)]  # a imagem é cortada de forma a capturar apenas a face
+                    Img = (NameFind.DetectEyes(FaceImage))
+                    cv2.putText(gray, "FACE DETECTED", (x + int((w / 2)), y - 5), cv2.FONT_HERSHEY_DUPLEX, .4, [255, 255, 255])  # texto plotado caso detecte rosto
+                    if Img is not None:
+                        frame = Img  # Show the detected faces
+                    else:
+                        frame = gray[y: y + h, x: x + w]
+                    cv2.imwrite("dataSet/User." + str(ID) + "." + str(Count) + ".jpg", frame)
+                    cv2.waitKey(300)
+                    cv2.imshow("CAPTURED PHOTO", frame)  # show the captured image
+                    Count = Count + 1
+            cv2.imshow('Face Recognition System Capture Faces', gray)  # Show the video
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        print('FACE CAPTURE FOR THE SUBJECT IS COMPLETE')
+        cam.release()
+        cv2.destroyAllWindows()
+        mensagem={}
+        mensagem['status']='usuário cadastrado'
+        mensagem['id'] = ID
+        return mensagem
+    except:
+        mensagem={}
+        mensagem['status']='Ocorreu um erro durante a captura facial, tente novamente'
+        return mensagem
+
 
 def treinaAlgoritmo():
     EigenFace = cv2.face.EigenFaceRecognizer_create(15)  # creating EIGEN FACE RECOGNISER

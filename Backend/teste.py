@@ -1,15 +1,15 @@
 import cv2
 import uteis
+ 
 
-cam = cv2.VideoCapture('me.mp4')
+cam = cv2.VideoCapture('Marllon.mp4')
 cap = cv2.VideoCapture(0)
 img = cv2.imread('marllon.jpg')
 
-# uteis.captura(cam)
+resp= uteis.captura(cam,'Marllon')
 # uteis.treinaAlgoritmo()
-resp = uteis.reconheceFoto(img)
+# resp = uteis.reconheceFoto(img)
 # resp = uteis.reconheceVideo(cap)
 
-resp1 = uteis.sit(resp)
-print (f'Situação: {resp1}')
+print (resp)
 
