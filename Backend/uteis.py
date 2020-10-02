@@ -4,13 +4,13 @@ import NameFind             # importa módulo NameFind
 import os                                               # importing the OS for path
 from PIL import Image                                   # importing Image library
 
-def captura (cam,nome):
+def captura (video,nome):
 
     face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')  # algoritmo detector de faces, a função classifier carrega o arquivo xml
     eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # algoritmo detector de olhos
 
     ID = NameFind.AddName(nome)
-    # cam = cv2.VideoCapture(0)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
+    cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
     Count = 0
 
     try:
