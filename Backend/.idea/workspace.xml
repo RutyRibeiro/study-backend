@@ -21,113 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="18e07d41-de05-4fb6-8b58-fdc2a2688ca8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marllon.mp4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Names.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recogniser/trainingDataEigan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recogniser/trainingDataEigan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recogniser/trainingDataFisher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recogniser/trainingDataFisher.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recogniser/trainingDataLBPH.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recogniser/trainingDataLBPH.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.3.9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataSet/User.4.9.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/funcoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/funcoes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grrrrrr.py" beforeDir="false" afterPath="$PROJECT_DIR$/grrrrrr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +61,7 @@
       <recent name="C:\Users\Ruty Ribeiro\Documents\MeusProjetos\estudy-backend\Backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.grrrrrr">
+  <component name="RunManager" selected="Python.teste">
     <configuration name="api (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -269,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.teste" />
         <item itemvalue="Python.grrrrrr" />
         <item itemvalue="Python.post" />
         <item itemvalue="Python.api (1)" />
         <item itemvalue="Python.api" />
-        <item itemvalue="Python.teste" />
       </list>
     </recent_temporary>
   </component>
@@ -311,22 +211,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1601253881150" />
-    <state width="1345" height="207" key="GridCell.Tab.0.bottom" timestamp="1601705494757">
+    <state width="1345" height="206" key="GridCell.Tab.0.bottom" timestamp="1601956228094">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1601705494757" />
-    <state width="1345" height="207" key="GridCell.Tab.0.center" timestamp="1601705494757">
+    <state width="1345" height="206" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
+    <state width="1345" height="206" key="GridCell.Tab.0.center" timestamp="1601956228094">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1601705494757" />
-    <state width="1345" height="207" key="GridCell.Tab.0.left" timestamp="1601705494757">
+    <state width="1345" height="206" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
+    <state width="1345" height="206" key="GridCell.Tab.0.left" timestamp="1601956228094">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1601705494757" />
-    <state width="1345" height="207" key="GridCell.Tab.0.right" timestamp="1601705494757">
+    <state width="1345" height="206" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
+    <state width="1345" height="206" key="GridCell.Tab.0.right" timestamp="1601956228094">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1601705494757" />
+    <state width="1345" height="206" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
     <state x="184" y="14" key="SettingsEditor" timestamp="1601516735896">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -343,6 +243,10 @@
           <url>file://$PROJECT_DIR$/teste.py</url>
           <line>8</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/grrrrrr.py</url>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

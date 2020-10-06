@@ -23,7 +23,7 @@ def cadastro(body):
 def downloadVideo(video):
      try:
          filename = secure_filename(video.filename)
-         video.save(os.path.join('/Users/Ruty Ribeiro/Documents/MeusProjetos/estudy-backend/Backend/videos',
+         video.save(os.path.join('/Users/Ruty Ribeiro/Documents/MeusProjetos/estudy-backend/Backend',
                                         secure_filename(filename)))
          return filename
      except:

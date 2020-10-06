@@ -1,5 +1,5 @@
 from flask import Flask, request, current_app
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import json, funcoes, cryptography
 
 
@@ -10,9 +10,11 @@ context = ('server.cert','server.key')
 
 
 app = Flask("Teste")
-# CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/": {"origins": "*"}})
 
 @app.route('/cadastro', methods=['POST'])
+@cross_origin(origin='*',headers=['Content- Type'])
 def cadastro():
     body={}
     body['nome']= request.form['nome']
@@ -25,6 +27,6 @@ def cadastro():
 
 @app.route('/', methods=['GET'])
 def get():
-    return 'ok'
+    return {'ok': 'ok'}
 
 app.run(ssl_context=context)
