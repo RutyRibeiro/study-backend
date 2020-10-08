@@ -22,7 +22,7 @@ def FileRead():
         NAME.append (Line.split(",")[1].rstrip())
        
     return NAME                                     # Return the two tuples
-        
+
 Names = FileRead()                                 # Run the above Function to get the ID and Names Tuple
 
 #     ------------------- FUNCTION TO FIND THE NAME  -----------------------------------------------------------
@@ -45,7 +45,8 @@ with open('Names.txt') as f:
 
 def ID2Name(ID, conf):
     if ID>=1 and ID<=last_string:
-        NameString = "Name: " + Names[ID-1] + " Confidence: " + (str(round(conf)) )                                # Find the Name using the index of the ID
+        # NameString = "Name: " + Names[ID-1] + " Confidence: " + (str(round(conf)) )       # Find the Name using the index of the ID
+        NameString = Names[ID - 1]
     else:
         NameString = "Face Not Recognised"  # Find the Name using the index of the ID
 

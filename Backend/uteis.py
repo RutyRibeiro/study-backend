@@ -104,52 +104,58 @@ def reconheceFoto(img):
 
     # ------------------------------------  PHOTO INPUT  -----------------------------------------------------
     NAME=''
-
+    img= cv2.imread(img)
+    # gray = cv2.cvtColor(np.float32(img), cv2.COLOR_RGB2GRAY)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
     faces = face_cascade.detectMultiScale(gray, 1.3, 4)  # Detect the faces and store the positions
     print(faces)
-
-    for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
-
-        Face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
-
-        ID, conf = LBPH.predict(Face)  # LBPH RECOGNITION
-        print(ID)
-        NAME = NameFind.ID2Name(ID, conf)
-        NameFind.DispID(x, y, w, h, NAME, gray)
-
-    cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    return NAME
-
-def reconheceVideo(cap):
-
-    face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')  # Classifier "frontal-face" Haar Cascade
-    eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # Classifier "eye" Haar Cascade
-
-    recognise = cv2.face.EigenFaceRecognizer_create(15, 4000)  # creating EIGEN FACE RECOGNISER
-    recognise.read("Recogniser/trainingDataEigan.xml")  # Load the training data
-    NAME=''
-    ID = 0
-    while True:
-        ret, img = cap.read()  # Read the camera object
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
-        faces = face_cascade.detectMultiScale(gray, 1.3, 5)  # Detect the faces and store the positions
+    try:
         for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
-            # ------------ BY CONFIRMING THE EYES ARE INSIDE THE FACE BETTER FACE RECOGNITION IS GAINED ------------------
-            gray_face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
-            eyes = eye_cascade.detectMultiScale(gray_face)
-            for (ex, ey, ew, eh) in eyes:
-                ID, conf = recognise.predict(gray_face)  # Determine the ID of the photo
-                NAME = NameFind.ID2Name(ID, conf)
-                NameFind.DispID(x, y, w, h, NAME, gray)
-        cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
-        if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
-            break
-    cap.release()
-    cv2.destroyAllWindows()
-    return NAME
+
+            Face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
+
+            ID, conf = LBPH.predict(Face)  # LBPH RECOGNITION
+            print(ID)
+            NAME = NameFind.ID2Name(ID, conf)
+            NameFind.DispID(x, y, w, h, NAME, gray)
+
+        # cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
+        # cv2.destroyAllWindows()
+
+        return {'nome':NAME, 'id':ID}
+    except Exception as e:
+       print(e)
+       return{'erro':'Face não reconhecida'}
+
+#
+# def reconheceVideo(cap):
+#
+#     face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')  # Classifier "frontal-face" Haar Cascade
+#     eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # Classifier "eye" Haar Cascade
+#
+#     recognise = cv2.face.EigenFaceRecognizer_create(15, 4000)  # creating EIGEN FACE RECOGNISER
+#     recognise.read("Recogniser/trainingDataEigan.xml")  # Load the training data
+#     NAME=''
+#     ID = 0
+#     while True:
+#         ret, img = cap.read()  # Read the camera object
+#         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
+#         faces = face_cascade.detectMultiScale(gray, 1.3, 5)  # Detect the faces and store the positions
+#         for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
+#             # ------------ BY CONFIRMING THE EYES ARE INSIDE THE FACE BETTER FACE RECOGNITION IS GAINED ------------------
+#             gray_face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
+#             eyes = eye_cascade.detectMultiScale(gray_face)
+#             for (ex, ey, ew, eh) in eyes:
+#                 ID, conf = recognise.predict(gray_face)  # Determine the ID of the photo
+#                 NAME = NameFind.ID2Name(ID, conf)
+#                 NameFind.DispID(x, y, w, h, NAME, gray)
+#         cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
+#         if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
+#             break
+#     cap.release()
+#     cv2.destroyAllWindows()
+#
+#     return NAME
 
 def sit(resp):
 

@@ -21,13 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="18e07d41-de05-4fb6-8b58-fdc2a2688ca8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Marllon.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NameFind.py" beforeDir="false" afterPath="$PROJECT_DIR$/NameFind.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Names.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recogniser/trainingDataEigan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recogniser/trainingDataEigan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recogniser/trainingDataFisher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recogniser/trainingDataFisher.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recogniser/trainingDataLBPH.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recogniser/trainingDataLBPH.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/funcoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/funcoes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grrrrrr.py" beforeDir="false" afterPath="$PROJECT_DIR$/grrrrrr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teste.py" beforeDir="false" afterPath="$PROJECT_DIR$/teste.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uteis.py" beforeDir="false" afterPath="$PROJECT_DIR$/uteis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/videos/Marllon.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/Marllon.mp4" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +60,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ruty Ribeiro\Documents\MeusProjetos\estudy-backend\Backend" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ruty Ribeiro\Documents\MeusProjetos\estudy-backend\Backend" />
     </key>
@@ -169,8 +175,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.teste" />
         <item itemvalue="Python.grrrrrr" />
+        <item itemvalue="Python.teste" />
         <item itemvalue="Python.post" />
         <item itemvalue="Python.api (1)" />
         <item itemvalue="Python.api" />
@@ -211,22 +217,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1601253881150" />
-    <state width="1345" height="206" key="GridCell.Tab.0.bottom" timestamp="1601956228094">
+    <state width="1345" height="206" key="GridCell.Tab.0.bottom" timestamp="1602123125084">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="206" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
-    <state width="1345" height="206" key="GridCell.Tab.0.center" timestamp="1601956228094">
+    <state width="1345" height="206" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1602123125084" />
+    <state width="1345" height="206" key="GridCell.Tab.0.center" timestamp="1602123125084">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="206" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
-    <state width="1345" height="206" key="GridCell.Tab.0.left" timestamp="1601956228094">
+    <state width="1345" height="206" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1602123125084" />
+    <state width="1345" height="206" key="GridCell.Tab.0.left" timestamp="1602123125083">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="206" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
-    <state width="1345" height="206" key="GridCell.Tab.0.right" timestamp="1601956228094">
+    <state width="1345" height="206" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1602123125083" />
+    <state width="1345" height="206" key="GridCell.Tab.0.right" timestamp="1602123125084">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1345" height="206" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1601956228094" />
+    <state width="1345" height="206" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1602123125084" />
     <state x="184" y="14" key="SettingsEditor" timestamp="1601516735896">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -247,6 +253,11 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/grrrrrr.py</url>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/grrrrrr.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

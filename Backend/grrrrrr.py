@@ -19,14 +19,19 @@ def cadastro():
     body={}
     body['nome']= request.form['nome']
     video= request.files['video']
-    body['video'] = funcoes.downloadVideo(video)
+    body['video'] = funcoes.download(video)
     print (body)
     # body=json.loads(request.data,strict=False)
     resp=funcoes.cadastro(body)
     return resp
 
-@app.route('/', methods=['GET'])
-def get():
-    return {'ok': 'ok'}
+@app.route('/login', methods=['POST'])
+@cross_origin(origin='*',headers=['Content- Type'])
+def login():
+    img = (request.files['imagemUsuario'])
+    img = funcoes.download(img)
+    resp= funcoes.login(img)
+
+    return resp
 
 app.run(ssl_context=context)

@@ -6,3 +6,11 @@
 6 , r
 7 , r
 8 , r
+9 , Ruty
+10 , Ruty
+11 , Ruty
+12 , Ruty
+13 , Ruty
+14 , Ruty
+15 , Clara
+16 , Clara
