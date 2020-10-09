@@ -1,16 +1,2 @@
 1 , Marllon
-2 , Marllon
-3 , Marllon
-4 , Marllon
-5 , r
-6 , r
-7 , r
-8 , r
-9 , Ruty
-10 , Ruty
-11 , Ruty
-12 , Ruty
-13 , Ruty
-14 , Ruty
-15 , Clara
-16 , Clara
+2 , Ruty

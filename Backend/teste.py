@@ -3,10 +3,10 @@ import uteis
  
 
 cam = cv2.VideoCapture('Marllon.mp4')
-cap = cv2.VideoCapture('Ruty.mp4')
-img = cv2.imread('imagemUsuario.png')
+cap = cv2.VideoCapture('Clara.mp4')
+img = cv2.imread('marllon.jpg')
 
-# resp= uteis.captura('Ruty.mp4','Ruty')
+# resp= uteis.captura(cap,'Clara')
 # uteis.treinaAlgoritmo()
 resp = uteis.reconheceFoto(img)
 # resp = uteis.reconheceVideo(cap)

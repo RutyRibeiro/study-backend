@@ -1,13 +1,8 @@
 from flask import Flask, request, current_app
 from flask_cors import CORS, cross_origin
-import json, funcoes, cryptography
-
-
+import json, funcoes, cryptography, os
 
 context = ('server.cert','server.key')
-# context.use_privatekey_file('.\certificates\server.key')
-# context.use_certificate_file('.\certificates\server.crt')
-
 
 app = Flask("Teste")
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -28,8 +23,13 @@ def cadastro():
 @app.route('/login', methods=['POST'])
 @cross_origin(origin='*',headers=['Content- Type'])
 def login():
+    try:
+        os.remove('imagemUsuario.png')
+    except:
+        pass
     img = (request.files['imagemUsuario'])
     img = funcoes.download(img)
+
     resp= funcoes.login(img)
 
     return resp

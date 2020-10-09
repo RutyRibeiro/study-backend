@@ -4,6 +4,7 @@ import cv2 #Video Capture Library
 import math # Image Rotation Library
 import time #Time count Library
 import os # Files Library
+import connection
 
 now_time =  time.process_time()
 
@@ -41,12 +42,13 @@ with open('Names.txt') as f:
         for s in string_last.split(): 
             if s.isdigit():
                 last_string = int(s) 
-                print("A base possui: " + str(last_string) + " " + "pessoas" )
+                # print("A base possui: " + str(last_string) + " " + "pessoas" )
 
-def ID2Name(ID, conf):
+def ID2Name(ID):
     if ID>=1 and ID<=last_string:
         # NameString = "Name: " + Names[ID-1] + " Confidence: " + (str(round(conf)) )       # Find the Name using the index of the ID
-        NameString = Names[ID - 1]
+        # NameString = Names[ID - 1]
+        NameString=connection.select(ID)
     else:
         NameString = "Face Not Recognised"  # Find the Name using the index of the ID
 
@@ -60,6 +62,8 @@ def AddName(nome):
     Name=nome
     Info = open("Names.txt", "r+")
     ID = ((sum(1 for line in Info))+1)
+    insereDb=connection.insert({'nome':Name,'id':ID})
+    print(insereDb)
     Info.write(str(ID) + " " + "," + " " + Name + "\n")
     print ("Name Stored in " + str(ID))
     Info.close()

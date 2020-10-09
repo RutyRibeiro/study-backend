@@ -1,5 +1,5 @@
 from flask import request
-import uteis, os
+import uteis, os, cv2, connection
 from werkzeug.utils import secure_filename
 
 def cadastro(body):
@@ -25,7 +25,12 @@ def login(img):
         response['erro'] = 'Você esta passando a propriedade nula ou vazia'
         return  response
     else:
-        response = uteis.reconheceFoto(img)
+        img=cv2.imread(img)
+        user = uteis.reconheceFoto(img)
+        response['nome']=user['nome']
+
+        response['conteudo'] =connection.buscaConteudo(user['id'])
+
         return response
 def download(file):
      try:

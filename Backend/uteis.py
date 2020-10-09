@@ -3,6 +3,7 @@ import numpy as np
 import NameFind             # importa módulo NameFind
 import os                                               # importing the OS for path
 from PIL import Image                                   # importing Image library
+from connection import buscaConteudo
 
 def captura (video,nome):
 
@@ -10,7 +11,8 @@ def captura (video,nome):
     eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # algoritmo detector de olhos
 
     ID = NameFind.AddName(nome)
-    cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
+    # cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
+    cam=video
     Count = 0
 
     try:
@@ -104,24 +106,22 @@ def reconheceFoto(img):
 
     # ------------------------------------  PHOTO INPUT  -----------------------------------------------------
     NAME=''
-    img= cv2.imread(img)
     # gray = cv2.cvtColor(np.float32(img), cv2.COLOR_RGB2GRAY)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
     faces = face_cascade.detectMultiScale(gray, 1.3, 4)  # Detect the faces and store the positions
-    print(faces)
+
     try:
         for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
 
             Face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
 
             ID, conf = LBPH.predict(Face)  # LBPH RECOGNITION
-            print(ID)
-            NAME = NameFind.ID2Name(ID, conf)
+            NAME = NameFind.ID2Name(ID)
             NameFind.DispID(x, y, w, h, NAME, gray)
 
         # cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
         # cv2.destroyAllWindows()
-
+        NAME=NAME.strip()
         return {'nome':NAME, 'id':ID}
     except Exception as e:
        print(e)
@@ -165,4 +165,7 @@ def sit(resp):
         return 'Face não reconhecida'
     else:
         return 'Pessoa cadastrada!'
+
+
+
 
