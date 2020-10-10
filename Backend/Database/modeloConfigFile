@@ -1,0 +1,7 @@
+criar arquivo ConfigFile.py contendo as informações do banco de dados
+config = {
+    'host':'0.0.0.0',
+    'user':'user',
+    'password':'password',
+    'database':'database'
+}
