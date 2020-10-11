@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="18e07d41-de05-4fb6-8b58-fdc2a2688ca8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagemUsuario.png" beforeDir="false" afterPath="$PROJECT_DIR$/imagemUsuario.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,10 +228,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1345" height="206" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1602367066627" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1602366210533">
+    <state x="184" y="14" key="SettingsEditor" timestamp="1602369399101">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1602366210533" />
+    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1602369399101" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1602201200710">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

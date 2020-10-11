@@ -57,7 +57,7 @@ def buscaConteudo(id):
     else:
         cursor = conn.cursor()
 
-    buscaDados = 'select * from agrotoxicos where nivel_usuario <= (select nivel_usuario from usuarios where id_usuario={}) order by nivel_usuario;'.format(id)
+    buscaDados = 'select * from agrotoxicos where nivel_usuario <= (select nivel_usuario from usuarios where id_usuario={}) order by periculosidade_agrotoxico desc;'.format(id)
     cursor.execute(buscaDados)
     resul = cursor.fetchall()
 
