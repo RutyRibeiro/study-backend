@@ -1,10 +1,10 @@
 import cv2
-import uteis
+import uteis,os
  
-
-cam = cv2.VideoCapture('Marllon.mp4')
-cap = cv2.VideoCapture('Clara.mp4')
-img = cv2.imread('marllon.jpg')
+# print(os.listdir())
+# cam = cv2.VideoCapture('Marllon.mp4')
+# cap = cv2.VideoCapture('Clara.mp4')
+img = cv2.imread('l.jpg')
 
 # resp= uteis.captura(cap,'Clara')
 # uteis.treinaAlgoritmo()

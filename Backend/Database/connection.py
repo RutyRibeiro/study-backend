@@ -67,18 +67,3 @@ def buscaConteudo(id):
 
     return resul
 
-def testaconexao():
-
-    try:
-        conn = mysql.connector.connect(**config)
-        print("Acesso ao banco de dados: Conexão Estabelecida")
-    except mysql.connector.Error as err:
-        print(err)
-    else:
-        cursor = conn.cursor()
-
-    conn.commit()
-    cursor.close()
-    conn.close()
-
-testaconexao()

@@ -3,7 +3,7 @@ import numpy as np
 import NameFind             # importa módulo NameFind
 import os                                               # importing the OS for path
 from PIL import Image                                   # importing Image library
-from connection import buscaConteudo
+from Database import connection
 
 def captura (video,nome):
 
@@ -106,10 +106,10 @@ def reconheceFoto(img):
 
     # ------------------------------------  PHOTO INPUT  -----------------------------------------------------
     NAME=''
-    # gray = cv2.cvtColor(np.float32(img), cv2.COLOR_RGB2GRAY)
+    
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
     faces = face_cascade.detectMultiScale(gray, 1.3, 4)  # Detect the faces and store the positions
-
+    
     try:
         for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
 
@@ -117,10 +117,11 @@ def reconheceFoto(img):
 
             ID, conf = LBPH.predict(Face)  # LBPH RECOGNITION
             NAME = NameFind.ID2Name(ID)
+            print(NAME)
             NameFind.DispID(x, y, w, h, NAME, gray)
 
-        # cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
-        # cv2.destroyAllWindows()
+        cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
+        cv2.destroyAllWindows()
         NAME=NAME.strip()
         return {'nome':NAME, 'id':ID}
     except Exception as e:
@@ -157,14 +158,6 @@ def reconheceFoto(img):
 #
 #     return NAME
 
-def sit(resp):
-
-    if resp == "Face Not Recognised":
-        return 'Pessoa não cadastrada!'
-    elif resp == "":
-        return 'Face não reconhecida'
-    else:
-        return 'Pessoa cadastrada!'
 
 
 

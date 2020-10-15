@@ -4,7 +4,7 @@ import cv2 #Video Capture Library
 import math # Image Rotation Library
 import time #Time count Library
 import os # Files Library
-import connection
+from Database import connection
 
 now_time =  time.process_time()
 
@@ -14,7 +14,7 @@ glass_cas = cv2.CascadeClassifier('Haar/haarcascade_eye_tree_eyeglasses.xml') # 
 WHITE = [255, 255, 255] 
 
 def FileRead():
-    Info = open("Names.txt", "r")                       # Open th text file in readmode
+    Info = open("./Names.txt", "r")                       # Open th text file in readmode
     NAME = []                                           # The tuple to store Names
     while (True):                                       # Read all the lines in the file and store them in two tuples
         Line = Info.readline()
