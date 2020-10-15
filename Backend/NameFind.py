@@ -64,7 +64,7 @@ def AddName(nome):
     ID = ((sum(1 for line in Info))+1)
     insereDb=connection.insert({'nome':Name,'id':ID})
     print(insereDb)
-    Info.write(str(ID) + " " + "," + " " + Name + "\n")
+    Info.write("\n" + str(ID) + " " + "," + " " + Name )
     print ("Name Stored in " + str(ID))
     Info.close()
     return ID
