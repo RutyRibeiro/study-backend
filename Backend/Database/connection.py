@@ -8,7 +8,7 @@ def insert(lib):
 
     try:
         conn = mysql.connector.connect(**config)
-        print("Acesso ao banco de dados: Conexão Estabelecida")
+        print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
     except mysql.connector.Error as err:
         print(err)
     else:
@@ -22,6 +22,7 @@ def insert(lib):
     conn.commit()
     cursor.close()
     conn.close()
+    print("Fechamento do banco de dados: Com sucesso - INSERT")
 
     return resul
 
@@ -30,7 +31,7 @@ def select(id):
 
     try:
         conn = mysql.connector.connect(**config)
-        print("Acesso ao banco de dados: Conexão Estabelecida")
+        print("Acesso ao banco de dados: Conexão Estabelecida - SELECT")
     except mysql.connector.Error as err:
         print(err)
     else:
@@ -44,6 +45,7 @@ def select(id):
     conn.commit()
     cursor.close()
     conn.close()
+    print("Fechamento do banco de dados: Com sucesso - SELECT")
 
     return nome
 
@@ -51,7 +53,7 @@ def buscaConteudo(id):
 
     try:
         conn = mysql.connector.connect(**config)
-        print("Acesso ao banco de dados: Conexão Estabelecida")
+        print("Acesso ao banco de dados: Conexão Estabelecida - BuscaConteudo")
     except mysql.connector.Error as err:
         print(err)
     else:
@@ -64,12 +66,14 @@ def buscaConteudo(id):
     conn.commit()
     cursor.close()
     conn.close()
+    print("Fechamento do banco de dados: Com sucesso - BuscaConteudo")
 
     return resul
 
 def consultaID():
     try:
         conn = mysql.connector.connect(**config)
+        print("Acesso ao banco de dados: Conexão Estabelecida - ConsultaID")
     except mysql.connector.Error as err:
         print(err)
     else:
@@ -82,6 +86,7 @@ def consultaID():
     conn.commit()
     cursor.close()
     conn.close()
+    print("Fechamento do banco de dados: Com sucesso- ConsultaID")
 
     return resul[0][0]
 
