@@ -35,14 +35,14 @@ def captura (video,nome):
                             frame = gray[y: y + h, x: x + w]
                         cv2.imwrite("dataSet/User." + str(ID) + "." + str(Count) + ".jpg", frame)
                         cv2.waitKey(300)
-                        cv2.imshow("CAPTURED PHOTO", frame)  # show the captured image
+                        # cv2.imshow("CAPTURED PHOTO", frame)  # show the captured image
                         Count = Count + 1
-                cv2.imshow('Face Recognition System Capture Faces', gray)  # Show the video
+                # cv2.imshow('Face Recognition System Capture Faces', gray)  # Show the video
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
             print('FACE CAPTURE FOR THE SUBJECT IS COMPLETE')
             cam.release()
-            cv2.destroyAllWindows()
+            # cv2.destroyAllWindows()
             NameFind.AddName(nome)
             mensagem['status']='usuário cadastrado'
             mensagem['id'] = ID
@@ -73,7 +73,7 @@ def treinaAlgoritmo():
             ID = int(os.path.split(imagePath)[-1].split('.')[1])  # Retreave the ID of the array
             FaceList.append(faceNP)  # Append the Numpy Array to the list
             IDs.append(ID)  # Append the ID to the IDs list
-            cv2.imshow('Training Set', faceNP)  # Show the images in the list
+            # cv2.imshow('Training Set', faceNP)  # Show the images in the list
             cv2.waitKey(1)
         return np.array(IDs), FaceList  # The IDs are converted in to a Numpy array
 
@@ -94,7 +94,7 @@ def treinaAlgoritmo():
     LBPHFace.save('Recogniser/trainingDataLBPH.xml')
     print('ALL XML FILES SAVED...')
 
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
 def reconheceFoto(img):
     face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')
@@ -113,26 +113,28 @@ def reconheceFoto(img):
 
     # ------------------------------------  PHOTO INPUT  -----------------------------------------------------
     NAME=''
-    
+
     try:
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
         faces = face_cascade.detectMultiScale(gray, 1.3, 4)  # Detect the faces and store the positions
-        for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
-
-            Face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
-
-            ID, conf = LBPH.predict(Face)  # LBPH RECOGNITION
-            NAME = NameFind.ID2Name(ID)
-            print(NAME)
-            NameFind.DispID(x, y, w, h, NAME, gray)
-
-        cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
-        cv2.destroyAllWindows()
-        NAME=NAME.strip()
-        try:
-            return {'nome':NAME, 'id':ID}
-        except:
+        if faces == ():
             return {'erro': 'Face não reconhecida'}
+        else:
+            for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
+
+                Face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
+
+                ID, conf = LBPH.predict(Face)  # LBPH RECOGNITION
+                
+                NAME = NameFind.ID2Name(ID)
+                NameFind.DispID(x, y, w, h, NAME, gray)
+
+            # cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
+            # cv2.destroyAllWindows()
+            NAME=NAME.strip()
+            print(NAME, ID)
+            return {'nome':NAME, 'id':ID}
+            
     except Exception as e:
        print(e)
        return{'erro':'Houve um problema com o reconhecimento facial'}
@@ -159,11 +161,11 @@ def reconheceVideo(cap):
                     ID, conf = recognise.predict(gray_face)  # Determine the ID of the photo
                     NAME = NameFind.ID2Name(ID)
                     NameFind.DispID(x, y, w, h, NAME, gray)
-            cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
+            # cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
             if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
                 break
         cap.release()
-        cv2.destroyAllWindows()        
+        # cv2.destroyAllWindows()        
         return ID
     except:
         return 0
