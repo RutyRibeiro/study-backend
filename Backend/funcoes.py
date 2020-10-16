@@ -38,8 +38,7 @@ def login(img):
 def download(file):
      try:
          filename = secure_filename(file.filename)
-         file.save(os.path.join('/Users/Ruty Ribeiro/Documents/MeusProjetos/estudy-backend/Backend',
-                                        secure_filename(filename)))
+         file.save(os.path.join('./',secure_filename(filename)))
          return filename
      except Exception as e:
          print(e)
