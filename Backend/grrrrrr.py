@@ -5,6 +5,8 @@ import funcoes, os
 context = ('./certificates/server.cert','./certificates/server.key')
 
 app = Flask("Teste")
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/": {"origins": "*"}})
 
@@ -29,7 +31,6 @@ def login():
         pass
     img = (request.files['imagemUsuario'])
     img = funcoes.download(img)
-
     resp= funcoes.login(img)
 
     return resp
