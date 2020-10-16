@@ -28,9 +28,11 @@ def login(img):
     else:
         img=cv2.imread(img)
         user = uteis.reconheceFoto(img)
-        response['nome']=user['nome']
-
-        response['conteudo'] =connection.buscaConteudo(user['id'])
+        if 'nome' not in user:
+            response = user
+        else:
+            response['nome']=user['nome']
+            response['conteudo'] =connection.buscaConteudo(user['id'])
 
         return response
 def download(file):
