@@ -34,4 +34,4 @@ def login():
 
     return resp
 
-app.run(ssl_context=context)
+app.run(host='0.0.0.0', port=3333, ssl_context=context)

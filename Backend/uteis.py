@@ -114,10 +114,9 @@ def reconheceFoto(img):
     # ------------------------------------  PHOTO INPUT  -----------------------------------------------------
     NAME=''
     
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
-    faces = face_cascade.detectMultiScale(gray, 1.3, 4)  # Detect the faces and store the positions
-    
     try:
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
+        faces = face_cascade.detectMultiScale(gray, 1.3, 4)  # Detect the faces and store the positions
         for (x, y, w, h) in faces:  # Frames  LOCATION X, Y  WIDTH, HEIGHT
 
             Face = cv2.resize((gray[y: y + h, x: x + w]), (110, 110))  # The Face is isolated and cropped
