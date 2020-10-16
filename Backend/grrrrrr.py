@@ -1,8 +1,8 @@
 from flask import Flask, request, current_app
 from flask_cors import CORS, cross_origin
-import json, funcoes, cryptography, os
+import funcoes, os
 
-context = ('server.cert','server.key')
+context = ('./certificates/server.cert','./certificates/server.key')
 
 app = Flask("Teste")
 app.config['CORS_HEADERS'] = 'Content-Type'
