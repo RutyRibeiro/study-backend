@@ -1,6 +1,7 @@
 from flask import request
-import uteis, os, cv2, connection
+import uteis, os, cv2
 from werkzeug.utils import secure_filename
+from Database import connection
 
 def cadastro(body):
     response={}
