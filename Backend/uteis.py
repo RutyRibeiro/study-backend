@@ -6,17 +6,17 @@ from PIL import Image
 from Database import connection
 
 def captura (video,nome):
+    cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
 
-    verificaCadastroPessoa = reconheceVideo(video)
+    verificaCadastroPessoa = reconheceVideo(cam)
     mensagem={}
-   
+    # verificaCadastroPessoa = 0
     if verificaCadastroPessoa == 0:
         face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')  # algoritmo detector de faces, a função classifier carrega o arquivo xml
         eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # algoritmo detector de olhos
 
         ID = connection.consultaID() +1
-        # cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
-        cam=video
+        
         Count = 0
 
         try:
@@ -113,6 +113,7 @@ def reconheceFoto(img):
 
     # ------------------------------------  PHOTO INPUT  -----------------------------------------------------
     NAME=''
+    cont=0
 
     try:
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Convert the Camera to gray
@@ -128,6 +129,7 @@ def reconheceFoto(img):
                 
                 NAME = NameFind.ID2Name(ID)
                 NameFind.DispID(x, y, w, h, NAME, gray)
+
 
             # cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
             # cv2.destroyAllWindows()
@@ -148,6 +150,7 @@ def reconheceVideo(cap):
     recognise.read("Recogniser/trainingDataEigan.xml")  # Load the training data
     NAME=''
     ID = 0
+    cont=0
     try:
         while True:
             ret, img = cap.read()  # Read the camera object
@@ -160,12 +163,15 @@ def reconheceVideo(cap):
                 for (ex, ey, ew, eh) in eyes:
                     ID, conf = recognise.predict(gray_face)  # Determine the ID of the photo
                     NAME = NameFind.ID2Name(ID)
+                    cont+=1
                     NameFind.DispID(x, y, w, h, NAME, gray)
-            # cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
-            if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
+            cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
+            # if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
+            #     break
+            if cont==4:
                 break
         cap.release()
-        # cv2.destroyAllWindows()        
+        cv2.destroyAllWindows()        
         return ID
     except:
         return 0
@@ -174,3 +180,5 @@ def reconheceVideo(cap):
 
 
 
+a = captura('Ruty.mp4','Ruty')
+print(a)
