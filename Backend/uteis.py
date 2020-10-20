@@ -182,6 +182,10 @@ def reconheceVideo(cap):
 
 
 
+<<<<<<< Updated upstream
+=======
+# treinaAlgoritmo()
+>>>>>>> Stashed changes
 
 # a = captura('Clara.mp4','Clara')
 # print(a)
