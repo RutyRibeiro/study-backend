@@ -4,7 +4,7 @@ import uteis,os
 # print(os.listdir())
 # cam = cv2.VideoCapture('Marllon.mp4')
 # cap = cv2.VideoCapture('Clara.mp4')
-# img = cv2.imread('l.jpg')
+# img = cv2.imread('tio.png')
 
 # resp = uteis.captura(cap,'Clara')
 uteis.treinaAlgoritmo()

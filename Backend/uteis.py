@@ -73,8 +73,8 @@ def treinaAlgoritmo():
             ID = int(os.path.split(imagePath)[-1].split('.')[1])  # Retreave the ID of the array
             FaceList.append(faceNP)  # Append the Numpy Array to the list
             IDs.append(ID)  # Append the ID to the IDs list
-            # cv2.imshow('Training Set', faceNP)  # Show the images in the list
-            cv2.waitKey(1)
+            cv2.imshow('Training Set', faceNP)  # Show the images in the list
+            # cv2.waitKey(1)
         return np.array(IDs), FaceList  # The IDs are converted in to a Numpy array
 
     IDs, FaceList = getImageWithID(path)
@@ -131,11 +131,14 @@ def reconheceFoto(img):
                 NameFind.DispID(x, y, w, h, NAME, gray)
 
 
-            # cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
-            # cv2.destroyAllWindows()
+            cv2.imshow('LBPH Face Recognition System', gray)  # IMAGE DISPLAY
+            cv2.destroyAllWindows()
             NAME=NAME.strip()
             print(NAME, ID)
-            return {'nome':NAME, 'id':ID}
+            try:
+                return {'nome':NAME, 'id':ID}
+            except:
+                return {'erro':'Face não reconhecida'}
             
     except Exception as e:
        print(e)
@@ -180,5 +183,5 @@ def reconheceVideo(cap):
 
 
 
-a = captura('Ruty.mp4','Ruty')
-print(a)
+# a = captura('Clara.mp4','Clara')
+# print(a)
