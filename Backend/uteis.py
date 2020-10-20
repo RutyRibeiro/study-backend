@@ -67,6 +67,7 @@ def treinaAlgoritmo():
         FaceList = []
         IDs = []
         for imagePath in imagePaths:
+            print(imagePath)
             faceImage = Image.open(imagePath).convert('L')  # Open image and convert to gray
             faceImage = faceImage.resize((110,110))         # resize the image so the EIGEN recogniser can be trained
             faceNP = np.array(faceImage, 'uint8')           # convert the image to Numpy array
