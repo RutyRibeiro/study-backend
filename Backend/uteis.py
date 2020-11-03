@@ -165,6 +165,8 @@ def reconheceVideo(cap):
             cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
             if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
                 break
+            if ID != '':
+                break    
         cap.release()
         cv2.destroyAllWindows()  
         print(ID)      
