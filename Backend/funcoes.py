@@ -1,7 +1,8 @@
 from flask import request
-import uteis, os, cv2
+import uteis, os, cv2,inspect
 from werkzeug.utils import secure_filename
-from Database import connection
+from Database import connection, tratamentoDeErros
+
 
 def cadastro(body):
     response={}
@@ -41,6 +42,6 @@ def download(file):
          file.save(os.path.join('./',secure_filename(filename)))
          return filename
      except Exception as e:
-         print(e)
-         return 'Ocorreu um erro no download '
+        tratamentoDeErros.printErro(os.path.basename(__file__),inspect.getframeinfo(inspect.currentframe())[2],e)
+        return 'Ocorreu um erro no download'
 

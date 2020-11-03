@@ -1,13 +1,14 @@
-import cv2
-import numpy as np
-import NameFind             
-import os                                               
+import cv2, NameFind, os, inspect
+import numpy as np                                    
 from PIL import Image                                   
-from Database import connection
+from Database import connection, tratamentoDeErros
 
-def captura (video,nome):
+nomeArq=os.path.basename(__file__)
 
-    verificaCadastroPessoa = reconheceVideo(video)
+def captura (video,nome): 
+    cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
+    # cam=video
+    verificaCadastroPessoa = reconheceVideo(cam)
     mensagem={}
    
     if verificaCadastroPessoa == 0:
@@ -15,8 +16,6 @@ def captura (video,nome):
         eye_cascade = cv2.CascadeClassifier('Haar/haarcascade_eye.xml')  # algoritmo detector de olhos
 
         ID = connection.consultaID() +1
-        # cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
-        cam=video
         Count = 0
 
         try:
@@ -48,7 +47,8 @@ def captura (video,nome):
             mensagem['id'] = ID
             return mensagem
         except Exception as e:
-            print(e)
+            tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
+
             mensagem['status']='Ocorreu um erro durante a captura facial, tente novamente'
             return mensagem
     else:
@@ -136,8 +136,9 @@ def reconheceFoto(img):
             return {'nome':NAME, 'id':ID}
             
     except Exception as e:
-       print(e)
-       return{'erro':'Houve um problema com o reconhecimento facial'}
+        tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
+
+        return{'erro':'Houve um problema com o reconhecimento facial'}
 
 def reconheceVideo(cap):
 
@@ -161,15 +162,15 @@ def reconheceVideo(cap):
                     ID, conf = recognise.predict(gray_face)  # Determine the ID of the photo
                     NAME = NameFind.ID2Name(ID)
                     NameFind.DispID(x, y, w, h, NAME, gray)
-            # cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
+            cv2.imshow('EigenFace Face Recognition System', gray)  # Show the video
             if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit if the key is Q
                 break
         cap.release()
-        # cv2.destroyAllWindows()        
+        cv2.destroyAllWindows()  
+        print(ID)      
         return ID
     except:
         return 0
-
 
 
 

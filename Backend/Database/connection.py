@@ -1,8 +1,9 @@
-import mysql.connector
+import mysql.connector, os, inspect, sys
+from Database import tratamentoDeErros
 from Database import ConfigFile
 
+nomeDoArquivo = os.path.basename(__file__)
 config=ConfigFile.config
-
 
 def insert(lib):
 
@@ -10,7 +11,7 @@ def insert(lib):
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
     except mysql.connector.Error as err:
-        print(err)
+        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
@@ -33,7 +34,7 @@ def select(id):
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - SELECT")
     except mysql.connector.Error as err:
-        print(err)
+        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
@@ -55,7 +56,7 @@ def buscaConteudo(id):
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - BuscaConteudo")
     except mysql.connector.Error as err:
-        print(err)
+        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
@@ -75,32 +76,40 @@ def consultaID():
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - ConsultaID")
     except mysql.connector.Error as err:
-        print(err)
+        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+
     else:
         cursor = conn.cursor()
 
-    consulta='SELECT id_usuario FROM usuarios ORDER BY id_usuario DESC limit 1';
-    cursor.execute(consulta)
-    resul = cursor.fetchall()
+        consulta='SELECT id_usuario FROM usuarios ORDER BY id_usuario DESC limit 1';
+        cursor.execute(consulta)
+        resul = cursor.fetchall()
 
+        cursor.close()
     conn.commit()
-    cursor.close()
     conn.close()
-    print("Fechamento do banco de dados: Com sucesso- ConsultaID")
+    print("Fechamento do banco de dados: Com sucesso - ConsultaID")
 
     return resul[0][0]
+    
 
 def deleteId(id):
     try:
         conn = mysql.connector.connect(**config)
     except mysql.connector.Error as err:
-        print(err)
+        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
-    deletaLinha=('delete from usuarios where id_usuario={}').format(id);
-    resul=cursor.execute(deletaLinha)
+        deletaLinha=('delete from usuarios where id_usuario={}').format(id)
+        cursor.execute(deletaLinha)
 
+        cursor.close()
+    
     conn.commit()
-    cursor.close()
     conn.close()
+
+    
+
+
+
