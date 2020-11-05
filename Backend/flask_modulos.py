@@ -1,8 +1,8 @@
-from flask import request
-import uteis, os, cv2,inspect
+import inspect
 from werkzeug.utils import secure_filename
-from Database import connection, tratamentoDeErros
-
+import cv2
+import tratamentoDeErros
+import reco_Modulos
 
 def cadastro(body):
     response={}
@@ -18,24 +18,31 @@ def cadastro(body):
         response['erro'] = 'Video obrigatório!'
         return response
     else:
-        response = uteis.captura(body['video'], body['nome'])
-        uteis.treinaAlgoritmo()
+        response = reco_Modulos.captura(body['video'], body['nome'])
         return response
+
 def login(img):
     response={}
+    
     if img == '' or img is None:
+        
         response['erro'] = 'Você esta passando a propriedade nula ou vazia'
+        
         return  response
+    
     else:
         img=cv2.imread(img)
         user = uteis.reconheceFoto(img)
+        
         if 'nome' not in user:
             response = user
+        
         else:
             response['nome']=user['nome']
-            response['conteudo'] =connection.buscaConteudo(user['id'])
+            response['conteudo'] = reco_Modulos.buscaConteudoUser(user['id'])
 
         return response
+
 def download(file):
      try:
          filename = secure_filename(file.filename)

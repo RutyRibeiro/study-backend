@@ -1,6 +1,8 @@
-import mysql.connector, os, inspect, sys
-import tratamentoDeErros
+import mysql.connector
+import os
+import inspect
 import ConfigFile
+import tratamentoDeErros
 
 nomeDoArquivo = os.path.basename(__file__)
 config=ConfigFile.config
@@ -44,7 +46,7 @@ def insert(lib):
     return resul
 
 
-def select(id):
+def selectNome(id):
 
     try:
         conn = mysql.connector.connect(**config)

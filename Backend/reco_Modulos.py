@@ -1,29 +1,25 @@
-# from Database import connection
-import tratamentoDeErros
-import cv2
-import inspect
-import os
-import numpy as np
-import math
-import face_recognition
 from os.path import isfile, join
+from Database import connection
+import tratamentoDeErros
+import face_recognition
+import numpy as np
+import inspect
+import math
+import cv2
+import os
 
 path = './dataSet'
-
-
 nomeArq = os.path.basename(__file__)
 
 glass_cas = cv2.CascadeClassifier('Haar/haarcascade_eye_tree_eyeglasses.xml') # Classifierde "eye" Haar Cascade
 face_cascade = cv2.CascadeClassifier('Haar/haarcascade_frontalcatface.xml')  # algoritmo detector de faces, a função classifier carrega o arquivo xml
 
 
-def procuraNome(ID):
-    if ID>=1 and ID<=last_string:
-        NameString=connection.select(ID)
-    else:
-        NameString = "Face não reconhecida" 
+def buscaNome(id):
+    
+    Nome = connection.selectNome(id) 
 
-    return NameString
+    return Nome
 
 def AddNome(nome):
     Name=nome
@@ -62,13 +58,13 @@ def DetectaOlhos(Image):
                     CroppedFace = Image[FaceY: FaceY + FaceHeight, FaceX: FaceX + FaceWidth]
                     return CroppedFace
 
-def captura (video,nome): 
+def captura(video,nome): 
     # cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
     
     cam=video
     
     Count=0
-    mensagem={}
+    msg={}
     ID = connection.consultaID() + 1   
     
     try:
@@ -95,36 +91,58 @@ def captura (video,nome):
                     Count = Count + 1
 
         AddNome(nome)
-        mensagem['status']='usuário cadastrado'
-        mensagem['id'] = ID
-        return mensagem
+        msg['status']='usuário cadastrado'
+        msg['id'] = ID
+        return msg
     
     except Exception as e:
         tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
 
-        mensagem['status']='Ocorreu um erro durante a captura facial, tente novamente'
-        return mensagem
+        msg['status']='Ocorreu um erro durante a captura facial, tente novamente'
+        return msg
 
-def reconhece (img):
+def reconhece(img):
+    cont = ID = 0
     files = [f for f in os.listdir(path) if isfile(join(path, f))]
+    msg={}
 
-    imagem= face_recognition.load_image_file(img)
-    imagem_encoding = face_recognition.face_encodings(imagem)[0]
+    try:
+        imagem= face_recognition.load_image_file(img)
+        imagem_encoding = face_recognition.face_encodings(imagem)[0]
 
-    for pessoa in files:
-
-        try:
+        for pessoa in files:
             img_desconhecida = face_recognition.load_image_file(f'./dataSet/{pessoa}')
             img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
-
+            
             # Compara as faces
             results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
             
             if results[0]:
+                ID = pessoa[5]
                 print (pessoa)
-        except IndexError as ie:
-            print('Não consegui encontrar uma face!')
-        except Exception as e:
-            print('Houve algum erro!')
+                cont+=1
+            
+            if cont == 3:
+                break
+        
+        nome = buscaNome(ID)
+        msg = {'nome':nome, 'id':ID}
 
-                
+    except IndexError as e:
+
+        print('Não consegui encontrar uma face')
+        msg={'erro':'Não consegui encontrar uma face'}
+
+    except Exception as e:
+
+        tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
+        msg={'erro':'Houve algum erro!'}
+        
+    finally:
+        return msg        
+
+def buscaConteudoUser (id):
+    conteudo = connection.buscaConteudo(id)
+    return conteudo
+
+

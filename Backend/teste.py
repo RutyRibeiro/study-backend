@@ -7,7 +7,7 @@ import reco_Modulos,os
 # img = cv2.imread('l.jpg')
 
 # resp = reco_Modulos.captura(cap,'Clara')
-resp= reco_Modulos.reconhece('./Fotos/mai.jpg')
+resp= reco_Modulos.reconhece('./Fotos/Ruty.jpg')
 
 print (resp)
 
