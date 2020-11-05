@@ -2,7 +2,7 @@ import mysql.connector
 import os
 import inspect
 import ConfigFile
-import tratamentoDeErros
+import tratamentoDeErros as Erros
 
 nomeDoArquivo = os.path.basename(__file__)
 config=ConfigFile.config
@@ -12,7 +12,7 @@ def testa():
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
     except mysql.connector.Error as err:
-        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+        Erros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
         cursor.close()
@@ -20,8 +20,6 @@ def testa():
     conn.commit()
     conn.close()
     print("Fechamento do banco de dados: Com sucesso - INSERT")
-testa()
-    
 
 def insert(lib):
 
@@ -29,7 +27,7 @@ def insert(lib):
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
     except mysql.connector.Error as err:
-        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+       Erros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
@@ -52,7 +50,7 @@ def selectNome(id):
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - SELECT")
     except mysql.connector.Error as err:
-        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+       Erros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
@@ -74,7 +72,7 @@ def buscaConteudo(id):
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - BuscaConteudo")
     except mysql.connector.Error as err:
-        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+       Erros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 
@@ -94,7 +92,7 @@ def consultaID():
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - ConsultaID")
     except Exception as err:
-        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+       Erros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
 
     else:
         cursor = conn.cursor()
@@ -115,7 +113,7 @@ def deleteId(id):
     try:
         conn = mysql.connector.connect(**config)
     except mysql.connector.Error as err:
-        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+       Erros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
     else:
         cursor = conn.cursor()
 

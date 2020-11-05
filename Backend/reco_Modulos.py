@@ -1,5 +1,5 @@
 from os.path import isfile, join
-from Database import connection
+import connection
 import tratamentoDeErros
 import face_recognition
 import numpy as np
@@ -21,16 +21,10 @@ def buscaNome(id):
 
     return Nome
 
-def AddNome(nome):
-    Name=nome
-    Info = open("Names.txt", "r+")
-    ID = ((sum(1 for line in Info))+1)
-    insereDb=connection.insert({'nome':Name,'id':ID})
-    print(insereDb)
-    Info.write("\n" + str(ID) + " " + "," + " " + Name )
-    print ("Name Stored in " + str(ID))
-    Info.close()
-    return ID
+def AddNome(nome,ID):
+    insereDb=connection.insert({'nome':nome,'id':ID})
+    print (insereDb)
+    print (f"nome: {nome} ID: {ID}")
 
 def DetectaOlhos(Image):
     Theta = 0
@@ -59,9 +53,9 @@ def DetectaOlhos(Image):
                     return CroppedFace
 
 def captura(video,nome): 
-    # cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
+    cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
     
-    cam=video
+    # cam=video
     
     Count=0
     msg={}
@@ -90,11 +84,11 @@ def captura(video,nome):
                     
                     Count = Count + 1
 
-        AddNome(nome)
+        AddNome(nome, ID)
         msg['status']='usuário cadastrado'
         msg['id'] = ID
         return msg
-    
+
     except Exception as e:
         tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
 

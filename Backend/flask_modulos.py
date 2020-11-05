@@ -1,4 +1,5 @@
 import inspect
+import os
 from werkzeug.utils import secure_filename
 import cv2
 import tratamentoDeErros
@@ -31,8 +32,8 @@ def login(img):
         return  response
     
     else:
-        img=cv2.imread(img)
-        user = uteis.reconheceFoto(img)
+        
+        user = reco_Modulos.reconhece(img)
         
         if 'nome' not in user:
             response = user

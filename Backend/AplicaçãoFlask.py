@@ -1,6 +1,6 @@
 from flask import Flask, request, current_app
 from flask_cors import CORS, cross_origin
-import funcoes, os
+import flask_modulos, os
 
 context = ('./certificates/server.cert','./certificates/server.key')
 
@@ -16,10 +16,10 @@ def cadastro():
     body={}
     body['nome']= request.form['nome']
     video= request.files['video']
-    body['video'] = funcoes.download(video)
+    body['video'] = flask_modulos.download(video)
     print (body)
     # body=json.loads(request.data,strict=False)
-    resp=funcoes.cadastro(body)
+    resp=flask_modulos.cadastro(body)
     return resp
 
 @app.route('/login', methods=['POST'])
@@ -30,8 +30,8 @@ def login():
     except:
         pass
     img = (request.files['imagemUsuario'])
-    img = funcoes.download(img)
-    resp= funcoes.login(img)
+    img = flask_modulos.download(img)
+    resp= flask_modulos.login(img)
 
     return resp
 
