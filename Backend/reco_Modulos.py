@@ -1,9 +1,15 @@
-from Database import connection, tratamentoDeErros
+# from Database import connection
+import tratamentoDeErros
 import cv2
 import inspect
 import os
 import numpy as np
 import math
+import face_recognition
+from os.path import isfile, join
+
+path = './dataSet'
+
 
 nomeArq = os.path.basename(__file__)
 
@@ -98,5 +104,27 @@ def captura (video,nome):
 
         mensagem['status']='Ocorreu um erro durante a captura facial, tente novamente'
         return mensagem
-    
-   
+
+def reconhece (img):
+    files = [f for f in os.listdir(path) if isfile(join(path, f))]
+
+    imagem= face_recognition.load_image_file(img)
+    imagem_encoding = face_recognition.face_encodings(imagem)[0]
+
+    for pessoa in files:
+
+        try:
+            img_desconhecida = face_recognition.load_image_file(f'./dataSet/{pessoa}')
+            img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
+
+            # Compara as faces
+            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
+            
+            if results[0]:
+                print (pessoa)
+        except IndexError as ie:
+            print('Não consegui encontrar uma face!')
+        except Exception as e:
+            print('Houve algum erro!')
+
+                
