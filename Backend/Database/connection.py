@@ -1,9 +1,25 @@
 import mysql.connector, os, inspect, sys
-from Database import tratamentoDeErros
-from Database import ConfigFile
+import tratamentoDeErros
+import ConfigFile
 
 nomeDoArquivo = os.path.basename(__file__)
 config=ConfigFile.config
+
+def testa():
+    try:
+        conn = mysql.connector.connect(**config)
+        print("Acesso ao banco de dados: Conexão Estabelecida - INSERT")
+    except mysql.connector.Error as err:
+        tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
+    else:
+        cursor = conn.cursor()
+        cursor.close()
+    
+    conn.commit()
+    conn.close()
+    print("Fechamento do banco de dados: Com sucesso - INSERT")
+testa()
+    
 
 def insert(lib):
 
@@ -75,23 +91,23 @@ def consultaID():
     try:
         conn = mysql.connector.connect(**config)
         print("Acesso ao banco de dados: Conexão Estabelecida - ConsultaID")
-    except mysql.connector.Error as err:
+    except Exception as err:
         tratamentoDeErros.printErro(nomeDoArquivo,inspect.getframeinfo(inspect.currentframe())[2],err)
 
     else:
         cursor = conn.cursor()
 
-        consulta='SELECT id_usuario FROM usuarios ORDER BY id_usuario DESC limit 1';
-        cursor.execute(consulta)
-        resul = cursor.fetchall()
+    consulta='SELECT id_usuario FROM usuarios ORDER BY id_usuario DESC limit 1'
+    cursor.execute(consulta)
+    resul = cursor.fetchall()
 
-        cursor.close()
-    conn.commit()
-    conn.close()
+    conn.commit()  
+    cursor.close()
+    conn.close() 
     print("Fechamento do banco de dados: Com sucesso - ConsultaID")
-
     return resul[0][0]
-    
+       
+        
 
 def deleteId(id):
     try:
