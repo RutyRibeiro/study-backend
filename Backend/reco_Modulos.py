@@ -7,6 +7,7 @@ import inspect
 import math
 import cv2
 import os
+from glob import glob
 
 path = './dataSet'
 nomeArq = os.path.basename(__file__)
@@ -52,13 +53,12 @@ def DetectaOlhos(Image):
                     CroppedFace = Image[FaceY: FaceY + FaceHeight, FaceX: FaceX + FaceWidth]
                     return CroppedFace
 
-def captura(video,nome): 
+def captura(video): 
     cam = cv2.VideoCapture(video)  # carrega a camera a ser usada, 0 significa que usava a camera embutida, webcam
     
     # cam=video
-    
-    Count=0
     msg={}
+    Count=0
     ID = connection.consultaID() + 1   
     
     try:
@@ -83,10 +83,7 @@ def captura(video,nome):
                     cv2.waitKey(300)
                     
                     Count = Count + 1
-
-        AddNome(nome, ID)
-        msg['status']='usuário cadastrado'
-        msg['id'] = ID
+        msg['id'] = ID   
         return msg
 
     except Exception as e:
@@ -139,4 +136,59 @@ def buscaConteudoUser (id):
     conteudo = connection.buscaConteudo(id)
     return conteudo
 
+def verificaCadastro(img):
+    cont = ID = 0
+    files = [f for f in os.listdir(path) if isfile(join(path, f))]
+    msg={}
 
+    try:
+        imagem= face_recognition.load_image_file(img)
+        imagem_encoding = face_recognition.face_encodings(imagem)[0]
+
+        for pessoa in files:
+            img_desconhecida = face_recognition.load_image_file(f'./dataSet/{pessoa}')
+            img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
+            
+            # Compara as faces
+            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
+            
+            if results[0]:
+                ID = pessoa[5]
+                print (pessoa)
+                cont+=1
+            
+        msg['cadastro'] = 'sim' if cont > 3 else 'nao'
+
+    except IndexError as e:
+
+        print('Não consegui encontrar uma face - Verificação de cadastro')
+        msg={'erro':'Não consegui encontrar uma face - Verificação de cadastro'}
+
+    except Exception as e:
+
+        tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
+        msg={'erro':'Houve algum erro!'}
+        
+    finally:
+        return msg        
+
+def cadastra (video, nome):
+    cap = captura(video) 
+    msg = {}
+    if 'id' in cap:
+        id = cap['id']
+        cad = verificaCadastro(f'./dataSet/User.{id}.0.jpg')
+        print(cad)
+        if cad['cadastro'] == 'nao':
+            AddNome(nome, id)
+            msg['status']='usuário cadastrado'
+            msg['id'] = id
+        elif cad['cadastro'] == 'sim':
+            for foto in glob(f'./dataSet/User.{id}.*.jpg'):
+                os.remove(foto)
+            msg['erro']='Não foi possivel realizar o cadastro, o usuário já foi cadstrado anteriormente!'
+        else:
+            msg = cad
+    else:
+        msg = cad
+    return msg

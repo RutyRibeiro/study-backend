@@ -6,8 +6,10 @@ import reco_Modulos,os
 cap = cv2.VideoCapture('Clara.mp4')
 # img = cv2.imread('l.jpg')
 
-resp = reco_Modulos.captura(cap,'./videos/Clara')
-# resp= reco_Modulos.reconhece('./Fotos/Ruty.jpg')
+# resp = reco_Modulos.captura(cap,'./videos/Clara')
+# # resp= reco_Modulos.reconhece('./Fotos/Ruty.jpg')
 
-print (resp)
+# print (resp)
 
+nome=reco_Modulos.buscaNome(1)
+print(nome)

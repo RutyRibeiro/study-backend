@@ -1,7 +1,6 @@
 import inspect
 import os
 from werkzeug.utils import secure_filename
-import cv2
 import tratamentoDeErros
 import reco_Modulos
 
@@ -19,7 +18,7 @@ def cadastro(body):
         response['erro'] = 'Video obrigatório!'
         return response
     else:
-        response = reco_Modulos.captura(body['video'], body['nome'])
+        response = reco_Modulos.cadastra(body['video'], body['nome'])
         return response
 
 def login(img):
