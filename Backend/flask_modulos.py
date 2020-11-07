@@ -4,22 +4,31 @@ from werkzeug.utils import secure_filename
 import tratamentoDeErros
 import reco_Modulos
 
+def verifica (request):
+    body={}
+    response = {}
+    
+    try:
+        body['nome']= request.form['nome']
+        body['video']= request.files['video']
+    except:
+        response['erro'] = 'Você esta passando a propriedade errada é apenas aceito NOME e VIDEO'
+        return  response
+    else:
+        if body['nome'] == ''or body['nome'] is None:
+            response['erro'] = 'Nome obrigatório!'
+            return response
+        elif body['video'] == '' or body['video'] is None:
+
+            response['erro'] = 'Video obrigatório!'
+            return response
+        else:
+            return body
+
 def cadastro(body):
     response={}
-    if 'nome' not in body or 'video' not in body:
-        response['erro'] = 'Você esta passano a propriedade errada é apenas aceito NOME e VIDEO'
-        return  response
-    elif body['nome'] == ''or body['nome'] is None:
-
-        response['erro'] = 'Nome obrigatório!'
-        return response
-    elif body['video'] == '' or body['video'] is None:
-
-        response['erro'] = 'Video obrigatório!'
-        return response
-    else:
-        response = reco_Modulos.cadastra(body['video'], body['nome'])
-        return response
+    response = reco_Modulos.cadastra(body['video'], body['nome'])
+    return response
 
 def login(img):
     response={}

@@ -89,7 +89,7 @@ def captura(video):
     except Exception as e:
         tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
 
-        msg['status']='Ocorreu um erro durante a captura facial, tente novamente'
+        msg['erro']='Ocorreu um erro durante a captura facial, tente novamente'
         return msg
 
 def reconhece(img):
@@ -178,7 +178,7 @@ def cadastra (video, nome):
     if 'id' in cap:
         id = cap['id']
         cad = verificaCadastro(f'./dataSet/User.{id}.0.jpg')
-        print(cad)
+
         if cad['cadastro'] == 'nao':
             AddNome(nome, id)
             msg['status']='usuário cadastrado'
@@ -190,5 +190,5 @@ def cadastra (video, nome):
         else:
             msg = cad
     else:
-        msg = cad
+        msg = cap
     return msg

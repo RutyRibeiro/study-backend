@@ -13,14 +13,17 @@ cors = CORS(app, resources={r"/": {"origins": "*"}})
 @app.route('/cadastro', methods=['POST'])
 @cross_origin(origin='*',headers=['Content- Type'])
 def cadastro():
-    body={}
-    body['nome']= request.form['nome']
-    video= request.files['video']
-    body['video'] = flask_modulos.download(video)
-    print (body)
-    # body=json.loads(request.data,strict=False)
-    resp=flask_modulos.cadastro(body)
-    return resp
+    
+    verificacao = flask_modulos.verifica(request)
+    if 'erro' in verificacao:
+        return verificacao
+    else:
+        video = verificacao['video']
+        verificacao['video'] = flask_modulos.download(video)
+        print (verificacao)
+        resp=flask_modulos.cadastro(verificacao)
+    
+        return resp
 
 @app.route('/login', methods=['POST'])
 @cross_origin(origin='*',headers=['Content- Type'])
