@@ -98,7 +98,7 @@ def reconhece(img):
     msg={}
 
     try:
-        imagem= face_recognition.load_image_file(img)
+        imagem= face_recognition.load_image_file(f'./Fotos/{img}')
         imagem_encoding = face_recognition.face_encodings(imagem)[0]
 
         for pessoa in files:
@@ -175,7 +175,7 @@ def verificaCadastro(img):
         return msg        
 
 def cadastra (video, nome):
-    cap = captura(video) 
+    cap = captura(f'./videos/{video}') 
     msg = {}
     if 'id' in cap:
         id = cap['id']
