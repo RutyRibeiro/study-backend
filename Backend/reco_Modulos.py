@@ -115,9 +115,11 @@ def reconhece(img):
             
             if cont == 3:
                 break
-        
-        nome = buscaNome(ID)
-        msg = {'nome':nome, 'id':ID}
+        if cont == 0:
+            msg = {'erro':'Usuário não cadastrado'}    
+        else:
+            nome = buscaNome(ID)
+            msg = {'nome':nome, 'id':ID}
 
     except IndexError as e:
 
