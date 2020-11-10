@@ -162,7 +162,7 @@ def verificaCadastro(img):
         msg['cadastro'] = 'sim' if cont > 3 else 'nao'
 
     except IndexError as e:
-
+        tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
         print('Não consegui encontrar uma face - Verificação de cadastro')
         msg={'erro':'Não consegui encontrar uma face - Verificação de cadastro'}
 
