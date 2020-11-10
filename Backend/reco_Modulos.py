@@ -181,11 +181,11 @@ def cadastra (video, nome):
         id = cap['id']
         cad = verificaCadastro(f'./dataSet/User.{id}.0.jpg')
 
-        if cad['cadastro'] == 'nao':
+        if 'cadastro' in cad and cad['cadastro'] == 'nao':
             AddNome(nome, id)
             msg['status']='usuário cadastrado'
             msg['id'] = id
-        elif cad['cadastro'] == 'sim':
+        elif 'cadastro' in cad and cad['cadastro'] == 'sim':
             for foto in glob(f'./dataSet/User.{id}.*.jpg'):
                 os.remove(foto)
             msg['erro']='Não foi possivel realizar o cadastro, o usuário já foi cadstrado anteriormente!'
