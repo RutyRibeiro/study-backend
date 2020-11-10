@@ -94,7 +94,7 @@ def captura(video):
 
 def reconhece(img):
     cont = ID = 0
-    files = [f for f in os.listdir(path) if isfile(join(path, f))]
+    files = sorted([f for f in os.listdir(path) if isfile(join(path, f))])
     msg={}
 
     try:
@@ -140,7 +140,7 @@ def buscaConteudoUser (id):
 
 def verificaCadastro(img):
     cont = ID = 0
-    files = [f for f in os.listdir(path) if isfile(join(path, f))]
+    files = sorted([f for f in os.listdir(path) if isfile(join(path, f))])
     msg={}
 
     try:
