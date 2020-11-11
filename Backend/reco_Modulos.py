@@ -94,7 +94,7 @@ def captura(video):
 
 def reconhece(img):
     cont = ID = 0
-    files = [f for f in os.listdir(path) if isfile(join(path, f))]
+    files = sorted([f for f in os.listdir(path) if isfile(join(path, f))])
     msg={}
 
     try:
@@ -106,7 +106,7 @@ def reconhece(img):
             img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
             
             # Compara as faces
-            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
+            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding, 0.5)
             
             if results[0]:
                 ID = pessoa[5]
@@ -122,8 +122,7 @@ def reconhece(img):
             msg = {'nome':nome, 'id':ID}
 
     except IndexError as e:
-
-        print('Não consegui encontrar uma face')
+        tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
         msg={'erro':'Não consegui encontrar uma face'}
 
     except Exception as e:
@@ -140,7 +139,7 @@ def buscaConteudoUser (id):
 
 def verificaCadastro(img):
     cont = ID = 0
-    files = [f for f in os.listdir(path) if isfile(join(path, f))]
+    files = sorted([f for f in os.listdir(path) if isfile(join(path, f))])
     msg={}
 
     try:
@@ -152,7 +151,7 @@ def verificaCadastro(img):
             img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
             
             # Compara as faces
-            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
+            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding, 0.5)
             
             if results[0]:
                 ID = pessoa[5]
@@ -181,11 +180,11 @@ def cadastra (video, nome):
         id = cap['id']
         cad = verificaCadastro(f'./dataSet/User.{id}.0.jpg')
 
-        if cad['cadastro'] == 'nao':
+        if 'cadastro' in cad and cad['cadastro'] == 'nao':
             AddNome(nome, id)
             msg['status']='usuário cadastrado'
             msg['id'] = id
-        elif cad['cadastro'] == 'sim':
+        elif 'cadastro' in cad and cad['cadastro'] == 'sim':
             for foto in glob(f'./dataSet/User.{id}.*.jpg'):
                 os.remove(foto)
             msg['erro']='Não foi possivel realizar o cadastro, o usuário já foi cadstrado anteriormente!'
