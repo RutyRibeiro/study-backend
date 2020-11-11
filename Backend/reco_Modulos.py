@@ -106,7 +106,7 @@ def reconhece(img):
             img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
             
             # Compara as faces
-            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
+            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding, 0.5)
             
             if results[0]:
                 ID = pessoa[5]
@@ -151,7 +151,7 @@ def verificaCadastro(img):
             img_desconhecida_encoding = face_recognition.face_encodings(img_desconhecida)[0]
             
             # Compara as faces
-            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding)
+            results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding, 0.5)
             
             if results[0]:
                 ID = pessoa[5]
