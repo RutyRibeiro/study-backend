@@ -27,7 +27,7 @@ def verifica (request):
 
 def cadastro(body):
     response={}
-    response = reco_Modulos.cadastra(body['video'], body['nome'])
+    response = reco_Modulos.cadastra(body['video'], (body['nome'].capitalize))
     return response
 
 def login(img):
