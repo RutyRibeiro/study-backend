@@ -27,7 +27,7 @@ def verifica (request):
 
 def cadastro(body):
     response={}
-    response = reco_Modulos.cadastra(body['video'], (body['nome'].capitalize))
+    response = reco_Modulos.cadastra(body['video'], (body['nome'].capitalize()))
     return response
 
 def login(img):
@@ -60,4 +60,6 @@ def download(file):
      except Exception as e:
         tratamentoDeErros.printErro(os.path.basename(__file__),inspect.getframeinfo(inspect.currentframe())[2],e)
         return 'Ocorreu um erro no download'
+
+
 
