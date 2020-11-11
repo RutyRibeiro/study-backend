@@ -122,8 +122,7 @@ def reconhece(img):
             msg = {'nome':nome, 'id':ID}
 
     except IndexError as e:
-
-        print('Não consegui encontrar uma face')
+        tratamentoDeErros.printErro(nomeArq,inspect.getframeinfo(inspect.currentframe())[2],e)
         msg={'erro':'Não consegui encontrar uma face'}
 
     except Exception as e:
