@@ -109,7 +109,10 @@ def reconhece(img):
             results = face_recognition.compare_faces([imagem_encoding], img_desconhecida_encoding, 0.5)
             
             if results[0]:
-                ID = pessoa[5]
+                if pessoa[6] != '.':
+                    ID = (f'{pessoa[5]}{pessoa[6]}')
+                else:
+                    ID = pessoa[5]
                 print (pessoa)
                 cont+=1
             
