@@ -1,15 +1,16 @@
-import cv2
-import uteis,os
+import cv2, sys
+import reco_Modulos,os
  
 # print(os.listdir())
 # cam = cv2.VideoCapture('Marllon.mp4')
 # cap = cv2.VideoCapture('Clara.mp4')
-# img = cv2.imread('tio.png')
+# img = cv2.imread('l.jpg')
 
-# resp = uteis.captura(cap,'Clara')
-uteis.treinaAlgoritmo()
-# resp = uteis.reconheceFoto(img)
-# resp = uteis.reconheceVideo(cap)
+# resp = reco_Modulos.captura(cap,'./videos/Clara')
+# # resp= reco_Modulos.reconhece('./Fotos/Ruty.jpg')
 
 # print (resp)
+
+
+
 

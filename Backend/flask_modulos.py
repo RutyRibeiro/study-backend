@@ -53,17 +53,11 @@ def login(img):
         return response
 
 def download(file):
-    try:
-        
-        filename = secure_filename(file.filename)
-        if filename[len(filename)-1] == '4':
-            file.save(os.path.join('videos',secure_filename('videoUsuario')))
-        else:
-            file.save(os.path.join('Fotos',secure_filename('imgUsuario.jpg')))
-        return filename
-    except Exception as e:
+     try:
+         filename = secure_filename(file.filename)
+         file.save(os.path.join('./',secure_filename(filename)))
+         return filename
+     except Exception as e:
         tratamentoDeErros.printErro(os.path.basename(__file__),inspect.getframeinfo(inspect.currentframe())[2],e)
         return 'Ocorreu um erro no download'
-
-
 
